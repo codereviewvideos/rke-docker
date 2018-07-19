@@ -4,7 +4,8 @@ ENV RANCHER_REPOSITORY rancher/rke
 
 WORKDIR /app
 
-RUN apk --no-cache add curl && \
+RUN echo "Installing Curl" && \
+    apk --no-cache add curl > /dev/null && \
     echo "Using Repository: $RANCHER_REPOSITORY" && \
     RANCHER_VERSION=$(curl --silent "https://api.github.com/repos/$RANCHER_REPOSITORY/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
     echo "Using Rancher Version: $RANCHER_VERSION" && \
