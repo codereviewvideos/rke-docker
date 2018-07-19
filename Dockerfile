@@ -10,4 +10,4 @@ RUN apk --no-cache add curl && \
     curl "https://github.com/$RANCHER_REPOSITORY/releases/download/$RANCHER_VERSION/rke_linux-amd64" --output rke_linux-amd64 && \
     chmod +x rke_linux-amd64 && \
     ls -lisa && \
-    ./rke_linux-amd64 --version
+    rke_linux-amd64 --version
