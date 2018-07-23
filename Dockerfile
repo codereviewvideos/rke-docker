@@ -10,6 +10,6 @@ RUN echo "Installing Curl" && \
     RANCHER_VERSION=$(curl --silent "https://api.github.com/repos/$RANCHER_REPOSITORY/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') && \
     echo "Using Rancher Version: $RANCHER_VERSION" && \
     curl --silent -L "https://github.com/$RANCHER_REPOSITORY/releases/download/$RANCHER_VERSION/rke_linux-amd64" --output rke_linux-amd64 && \
-    chmod +x rke_linux-amd64 && ./rke_linux-amd64 --version
+    chmod +x rke_linux-amd64 && ./rke_linux-amd64 --version && export PATH=/app/:$PATH
 
 CMD ["/app/rke_linux-amd64"]
